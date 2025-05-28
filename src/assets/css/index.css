@@ -1,0 +1,5 @@
+.np-img{
+    height: 380px;
+    object-fit: cover;
+    object-position: top;
+}
