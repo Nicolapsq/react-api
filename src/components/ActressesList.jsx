@@ -1,51 +1,53 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-const actorsApi = "https://lanciweb.github.io/demo/api/actors/";
+const actressessApi = "https://lanciweb.github.io/demo/api/actresses/";
 
-export default function ActorList() {
-  const [actors, setActors] = useState([]);
+export default function ActressesList() {
+  const [actresses, setActresses] = useState([]);
 
-  function fetchActor() {
-    axios.get(actorsApi).then((response) => {
-      const actorsList = response.data;
-      setActors(actorsList);
-      console.log(actorsList);
+  function fetchActres() {
+    axios.get(actressessApi).then((response) => {
+      const actressList = response.data;
+      setActresses(actressList);
+      console.log(actressList);
     });
   }
 
-  useEffect(fetchActor, []);
+  useEffect(fetchActres, []);
 
   return (
     <div className="container">
       <div className="row">
-        {actors.map((actor) => (
-          <div key={actor.id} className="card col-3">
-            <img src={actor.image} className="card-img-top p-3 np-img" alt="..."></img>
+        {actresses.map((actress) => (
+          <div key={actress.id} className="card col-3">
+            <img
+              src={actress.image}
+              className="card-img-top p-3 np-img"
+              alt="..."
+            ></img>
             <div className="card-body">
               <h5 className="card-title">
                 <span className="fw-bold fs-5">Name : </span>
-                {actor.name}
+                {actress.name}
               </h5>
               <p className="card-text">
                 <span className="fw-bold fs-5">Birthyear : </span>
-                {actor.birth_year}
+                {actress.birth_year}
               </p>
               <p className="card-text">
                 <span className="fw-bold fs-5">Nationality : </span>
-                {actor.nationality}
+                {actress.nationality}
               </p>
               <p className="card-text">
                 <span className="fw-bold fs-5">Biography : </span>
-                {actor.biography}
+                {actress.biography}
               </p>
               <div className="card-text">
                 <span className="fw-bold fs-5">Awards</span>
-                {actor.awards.map((award, index) => (
-                  <div key={index}>
-                    <div>{award}</div>
-                  </div>
-                ))}
+                <div>
+                  <div>{actress.awards}</div>
+                </div>
               </div>
             </div>
           </div>
